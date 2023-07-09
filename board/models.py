@@ -9,7 +9,7 @@ class Board(models.Model):
     title = models.CharField(max_length=100)
     body = models.TextField(default="")
     date = models.DateTimeField(auto_now_add=True, null=True)
-    comment = models.Comment
+    comments = models.TextField(default="")
     
 
 
@@ -18,7 +18,7 @@ class Comment(models.Model):
     board = models.ForeignKey(Board, on_delete=models.CASCADE)
     user = models.ForeignKey(CustomUser, null=False, blank=False, on_delete=models.CASCADE, default="")
     created_at = models.DateField(auto_now_add=True, null=True)
-    comment = models.TextField(default="")
+    comments = models.TextField(default="")
 
     def __str__(self):
-        return self.comment
+        return self.comments
